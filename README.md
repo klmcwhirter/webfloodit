@@ -12,3 +12,11 @@ This port runs as:
 - nginx
 - bundled and packaged into an OCI container image
 - to be hosted in OMV6 on a Raspberry Pi using docker-compose
+
+## Install
+
+1. `npm run build`
+1. `docker build -t klmcwhirter/webfloodit:latest .`
+1. Assure docker registry configuration
+1. `docker push` to registry
+1. `docker pull` as appropriate

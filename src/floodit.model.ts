@@ -1,27 +1,27 @@
 import shuffle from "shuffle-array";
 
 const COLOR_CHOICES = [
-  "black",
-  "darkgray",
-  "gray",
-  "white",
-  "red",
-  "orange",
-  "yellow",
-  "tan",
-  "green",
-  "cyan",
-  "lightblue",
-  "blue",
-  "violet",
-  "purple",
+  "bg-black",
+  "bg-gray-500",
+  "bg-stone-300", // lightgray
+  "bg-white",
+  "bg-red-700",
+  "bg-orange-400",
+  "bg-[yellow]",
+  "bg-[tan]",
+  "bg-green-600",
+  "bg-cyan-400",
+  "bg-sky-200", // lightblue
+  "bg-blue-700",
+  "bg-violet-300",
+  "bg-purple-800",
 ];
 
 type BoardType = string[][];
 
 export class FloodItStrategy {
   static BOARD_SIZE = 14;
-  static MOVES_LIMIT = 20;
+  static MOVES_LIMIT = 28;
   move: number = 0;
   colors: string[];
   board: BoardType;

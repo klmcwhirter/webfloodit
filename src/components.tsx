@@ -1,20 +1,14 @@
 import { For } from "solid-js";
-import { useAppState } from "./AppState";
 
 export function Board(props) {
   return (
-    <div class={props.class}>
+    <div class="board">
       <For each={props.state.board}>
         {(row: string[], r) => (
-          <div class={props.rowClass}>
+          <div class="boardrow">
             <For each={row}>
               {(col, c) => {
-                const colorStyle = `background-color: ${col}`;
-                return (
-                  <div class={props.cellClass} style={colorStyle}>
-                    &nbsp;
-                  </div>
-                );
+                return <div class={`boardcell ${col}`}>&nbsp;</div>;
               }}
             </For>
           </div>
@@ -26,16 +20,14 @@ export function Board(props) {
 
 export function Palette(props) {
   return (
-    <div class={props.class}>
-      <div class={props.paletteList}>
+    <div class="palette">
+      <div class="palettelist">
         <For each={props.colors}>
           {(col: string, c) => {
-            const colorStyle = `background-color: ${col}`;
             return (
               <div
                 onClick={() => props.onChoose(col)}
-                class={props.paletteCell}
-                style={colorStyle}
+                class={`palettecell ${col} rounded-full ring-2 ring-black hover:scale-125`}
               >
                 &nbsp;
               </div>
@@ -49,17 +41,27 @@ export function Palette(props) {
 
 export function Toolbar(props) {
   return (
-    <ul class={props.class}>
+    <ul class="reset pt-3">
       <li>
-        <button onClick={props.onReset}>New</button>
+        <button
+          class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
+          onClick={props.onNew}
+        >
+          New
+        </button>
       </li>
       <li>
-        <button onClick={props.onRestart}>Restart</button>
+        <button
+          class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
+          onClick={props.onRestart}
+        >
+          Restart
+        </button>
       </li>
     </ul>
   );
 }
 
 export function WinText(props) {
-  return <div class={props.class}>{props.win_text}</div>;
+  return <div class="wintext pb-3 text-4xl">{props.win_text}</div>;
 }

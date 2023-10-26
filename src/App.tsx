@@ -6,45 +6,34 @@ import { FloodItStrategy } from "./floodit.model";
 let origState: FloodItStrategy = new FloodItStrategy();
 
 function App() {
-  const [strategy, setStrategy] = createSignal(origState);
+  const [state, setState] = createSignal(origState);
 
-  function choose(color: string) {
+  function chooseColor(color: string) {
     // console.log(`choose: color=${color}`);
-    const curr = strategy();
+    const curr = state();
     const model = new FloodItStrategy(curr);
     model.choose(color);
-    setStrategy(model);
+    setState(model);
   }
 
-  function reset(): void {
+  function newGame(): void {
     console.log("reset: resetting game:");
     origState = new FloodItStrategy();
-    setStrategy(origState);
+    setState(origState);
   }
 
   function restartGame(): void {
     console.log("restartGame: restarting game");
     const model = new FloodItStrategy(origState);
-    setStrategy(model);
+    setState(model);
   }
 
   return (
     <div class="container">
-      <Toolbar class="reset" onReset={reset} onRestart={restartGame}></Toolbar>
-      <Palette
-        class="palette"
-        colors={strategy().colors}
-        onChoose={choose}
-        paletteCell="palettecell"
-        paletteList="palettelist"
-      ></Palette>
-      <WinText class="wintext" win_text={strategy().win_text}></WinText>
-      <Board
-        class="board"
-        rowClass="boardrow"
-        cellClass="boardcell"
-        state={strategy()}
-      ></Board>
+      <Toolbar onNew={newGame} onRestart={restartGame}></Toolbar>
+      <Palette colors={state().colors} onChoose={chooseColor}></Palette>
+      <WinText win_text={state().win_text}></WinText>
+      <Board state={state()}></Board>
     </div>
   );
 }
