@@ -70,7 +70,7 @@ export function Toolbar(props) {
             size="2"
           />
           <button
-            class="p-1 rounded-lg scale-75 bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-100"
+            class="ml-2 p-1 rounded-lg scale-75 bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-100"
             onClick={() => {
               setNewSize(FloodItStrategy.DEFAULT_BOARD_SIZE);
               setNewNumMoves(FloodItStrategy.DEFAULT_MOVES_LIMIT);

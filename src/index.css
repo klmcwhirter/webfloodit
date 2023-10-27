@@ -11,7 +11,7 @@
   margin-left: auto;
   margin-right: auto;
   align-content: center;
-  width: 60%;
+  width: 80%;
 }
 
 .spacer {
@@ -58,14 +58,15 @@
   border: 2px solid black;
   border-collapse: collapse;
   margin-top: 2.5px;
-  margin-right: 10px;
   margin-bottom: 2.5px;
   align-items: center;
   justify-content: center;
   height: 50px;
   max-height: 50px;
   min-height: 50px;
+  width: 50px;
   max-width: 50px;
+  min-width: 50px;
 }
 
 .palette {
