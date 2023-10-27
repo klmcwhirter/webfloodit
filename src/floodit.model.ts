@@ -20,8 +20,10 @@ const COLOR_CHOICES = [
 type BoardType = string[][];
 
 export class FloodItStrategy {
-  static BOARD_SIZE = 14;
-  static MOVES_LIMIT = 28;
+  static DEFAULT_BOARD_SIZE = 14;
+  static DEFAULT_MOVES_LIMIT = 28;
+  static BOARD_SIZE = this.DEFAULT_BOARD_SIZE;
+  static MOVES_LIMIT = this.DEFAULT_MOVES_LIMIT;
   move: number = 0;
   colors: string[];
   board: BoardType;

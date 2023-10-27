@@ -16,8 +16,10 @@ function App() {
     setState(model);
   }
 
-  function newGame(): void {
+  function newGame(size: number, numMoves: number): void {
     console.log("reset: resetting game:");
+    FloodItStrategy.BOARD_SIZE = size;
+    FloodItStrategy.MOVES_LIMIT = numMoves;
     origState = new FloodItStrategy();
     setState(origState);
   }

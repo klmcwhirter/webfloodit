@@ -1,4 +1,5 @@
-import { For } from "solid-js";
+import { For, createSignal } from "solid-js";
+import { FloodItStrategy } from "./floodit.model";
 
 export function Board(props) {
   return (
@@ -40,25 +41,79 @@ export function Palette(props) {
 }
 
 export function Toolbar(props) {
+  const [newSize, setNewSize] = createSignal(
+    FloodItStrategy.DEFAULT_BOARD_SIZE
+  );
+  const [newNumMoves, setNewNumMoves] = createSignal(
+    FloodItStrategy.DEFAULT_MOVES_LIMIT
+  );
+
   return (
-    <ul class="reset pt-3">
-      <li>
-        <button
-          class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
-          onClick={props.onNew}
-        >
-          New
-        </button>
-      </li>
-      <li>
-        <button
-          class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
-          onClick={props.onRestart}
-        >
-          Restart
-        </button>
-      </li>
-    </ul>
+    <div class="reset">
+      <div class="text-lg">
+        <div class="ml-40 text-left">
+          <label class="pr-2" for="board-size">
+            Board Size:
+          </label>
+          <input
+            type="number"
+            id="board-size"
+            placeholder="Board size in squares; default is 14"
+            value={newSize()}
+            onInput={(e) => {
+              const size = +e.currentTarget.value;
+              setNewSize(size);
+              setNewNumMoves(size * 2);
+            }}
+            min="10"
+            max="20"
+            size="2"
+          />
+          <button
+            class="p-1 rounded-lg scale-75 bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-100"
+            onClick={() => {
+              setNewSize(FloodItStrategy.DEFAULT_BOARD_SIZE);
+              setNewNumMoves(FloodItStrategy.DEFAULT_MOVES_LIMIT);
+            }}
+          >
+            Reset
+          </button>
+        </div>
+        <div class="ml-40 text-left">
+          <label class="pr-2" for="num-moves">
+            Number Moves:
+          </label>
+          <input
+            type="number"
+            id="num-moves"
+            placeholder="Number of moves; default is 28"
+            value={newNumMoves()}
+            onInput={(e) => setNewNumMoves(+e.currentTarget.value)}
+            min="10"
+            max="30"
+            size="2"
+          />
+        </div>
+      </div>
+      <ul class="mt-3 pt-3">
+        <li>
+          <button
+            class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
+            onClick={() => props.onNew(newSize(), newNumMoves())}
+          >
+            New
+          </button>
+        </li>
+        <li>
+          <button
+            class="rounded-lg bg-blue-700 text-white hover:bg-blue-600 hover:text-[gold] hover:font-bold hover:scale-125"
+            onClick={props.onRestart}
+          >
+            Restart
+          </button>
+        </li>
+      </ul>
+    </div>
   );
 }
 
