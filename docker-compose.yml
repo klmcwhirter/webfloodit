@@ -1,9 +1,12 @@
 version: "3.8"
 services:
   webfloodit:
-    image: klmcwhirter/webfloodit:latest
+    # image: klmcwhirter/webfloodit:latest
     ports:
-      - "8080:80"
+      - 8080:80
+    build:
+      context: .
+      dockerfile: Dockerfile
     deploy:
       replicas: 1
       update_config:

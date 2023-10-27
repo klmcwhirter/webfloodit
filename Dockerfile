@@ -1,3 +1,11 @@
+FROM node:20-alpine as build
+
+WORKDIR /app
+COPY . /app
+
+RUN npm install && npm run build
+
+
 FROM nginx:mainline-alpine
 
-COPY ./dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html

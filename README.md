@@ -15,8 +15,16 @@ This port runs as:
 
 ## Build / Install
 
-1. Assure docker registry configuration on build machine (and login so push can work)
-1. `npm run build`
-1. `docker build -t klmcwhirter/webfloodit:latest .`
-1. `docker push` to registry
-1. `docker pull` as appropriate on deployment host
+The build is automated in the [docker-compose.yml](docker-compose.yml) file.
+
+This has 2 benefits:
+
+- The app will be built on the target architecture in which it will eventually run.
+- No image will need to be registered to Docker Hub, etc.
+
+### Steps
+
+1. stop running service
+1. clone repo
+1. from repo root dir: `docker-compose build --no-cache`
+1. start running service
