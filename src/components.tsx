@@ -9,7 +9,9 @@ export function Board(props) {
           <div class="boardrow">
             <For each={row}>
               {(col, c) => {
-                return <div class={`boardcell ${col}`}>&nbsp;</div>;
+                return (
+                  <div class={`boardcell aspect-square ${col}`}>&nbsp;</div>
+                );
               }}
             </For>
           </div>
