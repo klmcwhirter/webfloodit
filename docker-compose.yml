@@ -1,7 +1,8 @@
 version: "3.8"
 services:
   webfloodit:
-    # image: klmcwhirter/webfloodit:latest
+    environment:
+      TZ: PST8PDT
     ports:
       - 8080:80
     build:
@@ -9,8 +10,5 @@ services:
       dockerfile: Dockerfile
     deploy:
       replicas: 1
-      update_config:
-        parallelism: 1
-        delay: 10s
       restart_policy:
-        condition: on-failure
+        condition: unless-stopped
