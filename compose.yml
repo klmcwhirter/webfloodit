@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   webfloodit:
     environment:
@@ -7,7 +6,7 @@ services:
       - 8080:80
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Containerfile
     deploy:
       replicas: 1
       restart_policy:
