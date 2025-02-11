@@ -4,18 +4,18 @@ Floodit as a web application
 
 ## Project Overview
 
-webfloodit is a port of the floodit app as presented in chapter 8 of the _Create Graphical User Interfaces with Python_ book from Raspberry Pi Press.
+webfloodit is a port of the floodit app as presented in chapter 8 of the [_Create Graphical User Interfaces with Python_](https://magpi.raspberrypi.com/books/create-guis) book from Raspberry Pi Press.
 
 This port runs as:
 
 - a web app using SolidJS
 - nginx
 - bundled and packaged into an OCI container image
-- to be hosted in OMV6 on a Raspberry Pi using docker-compose
+- to be hosted in OMV on a Raspberry Pi using `docker compose`
 
 ## Build / Install
 
-The build is automated in the [docker-compose.yml](docker-compose.yml) file.
+The build is automated in the [compose.yml](compose.yml) file.
 
 This has 2 benefits:
 
@@ -26,5 +26,5 @@ This has 2 benefits:
 
 1. stop running service
 1. clone repo
-1. from repo root dir: `docker-compose build --no-cache`
+1. from repo root dir: `docker compose build --no-cache`
 1. start running service
